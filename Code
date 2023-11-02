@@ -1,0 +1,96 @@
+import random
+import requests
+
+# Random sample range creates a choice of 6 pokemon for the user
+
+def get_pokemon():
+    pokemon_id = (random.sample(range(1, 151), 6))
+    for number in pokemon_id:
+        url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(number)
+        response = requests.get(url)
+        pokemon = response.json()
+        print(number, pokemon['name']) # Print name shows the user the names of the pokemon before their decision
+
+# This function displays the pokemons stats to the user after choice
+
+def pokestats():
+    url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(choice)
+    response = requests.get(url)
+    pokemon = response.json()
+    print(pokemon['name'], ", I choose you!")
+    print("Height: ", pokemon['height'], ",\nWeight: ", pokemon['weight'], ",\nBase experience: ",
+          pokemon['base_experience'])
+
+# This function generates the opponents (computer's) stats
+
+def get_opponent_pokemon():
+    pokemon_number = random_pokemon
+    url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(pokemon_number)
+    response = requests.get(url)
+    pokemon = response.json()
+    print("Bug catcher chose", pokemon['name'])
+    print("Height: ", pokemon['height'], ",\nWeight: ", pokemon['weight'], ",\nBase experience: ",
+          pokemon['base_experience'])
+
+# Run function runs the game and compares stats
+
+def run():
+    if my_stat_choice == "height":
+        url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(choice)
+        response = requests.get(url)
+        pokemon = response.json()
+        return int(pokemon['height'])
+    elif my_stat_choice == "weight":
+        url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(choice)
+        response = requests.get(url)
+        pokemon = response.json()
+        return int(pokemon['weight'])
+    elif my_stat_choice == "base experience":
+        url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(choice)
+        response = requests.get(url)
+        pokemon = response.json()
+        return int(pokemon['base_experience'])
+
+def opponent_stats():
+    get_opponent_pokemon()
+    if my_stat_choice == "height":
+        url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(random_pokemon)
+        response = requests.get(url)
+        pokemon = response.json()
+        return int(pokemon['height'])
+    elif my_stat_choice == "weight":
+        url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(random_pokemon)
+        response = requests.get(url)
+        pokemon = response.json()
+        return int(pokemon['weight'])
+    elif my_stat_choice == "base experience":
+        url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(random_pokemon)
+        response = requests.get(url)
+        pokemon = response.json()
+        return int(pokemon['base_experience'])
+
+# For loop creates 3 rounds
+
+for x in range(3):
+    print('Round', x + 1)
+
+    get_pokemon()
+    input_choice = input("Type the ID number of the Pokemon you choose: ")
+
+    choice = int(input_choice)
+    pokestats()
+    my_stat_choice = input("Which stat do you want to use? (height, weight, base experience): ")
+    run()
+    my_stat = run()
+    opponent_result = opponent_stats()
+
+# If elif and else statements display the outcome of the game
+
+    if my_stat > opponent_result:
+        print('You Win! \n')
+    elif my_stat < opponent_result:
+        print('You Lose! \n')
+    else:
+        print('Draw! \n')
+
+
