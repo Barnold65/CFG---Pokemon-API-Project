@@ -69,6 +69,24 @@ def opponent_stats():
         pokemon = response.json()
         return int(pokemon['base_experience'])
 
+def score_count():
+  your_score = 0
+  computer_score = 0
+  if my_stat > opponent_result:
+        your_score = your_score + 1
+        print("Your score = ", your_score)
+        print("Computer = ", computer_score)
+  elif my_stat < opponent_result:
+        computer_score = computer_score + 1
+        print("Your score = ", your_score)
+        print("Computer = ", computer_score)
+  else:
+        print("Your score = ", your_score)
+        print("Computer = ", computer_score)
+
+your_score = 0
+computer_score = 0
+
 # For loop creates 3 rounds
 for i in range(3):
     print('Round', i + 1)
@@ -94,4 +112,16 @@ for i in range(3):
     else:
         print('Draw!\n')
 
+# If statement to create score count
+    if my_stat > opponent_result:
+        your_score = your_score + 1
+        print("Your score = ", your_score\n)
+        print("Computer = ", computer_score\n)
+    elif my_stat < opponent_result:
+        computer_score = computer_score + 1
+        print("Your score = ", your_score\n)
+        print("Computer = ", computer_score\n)
+    else:
+        print("Your score = ", your_score\n)
+        print("Computer = ", computer_score\n)
 
