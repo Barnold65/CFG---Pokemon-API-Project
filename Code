@@ -1,6 +1,9 @@
 import random
 import requests
 
+def welcome():
+  print("Welcome to Pokemon Top Trumps", "\n")
+
 # Random sample range creates a choice of 6 pokemon for the user
 def get_pokemon():
     pokemon_id = (random.sample(range(1, 151), 6))
@@ -69,27 +72,14 @@ def opponent_stats():
         pokemon = response.json()
         return int(pokemon['base_experience'])
 
-def score_count():
-  your_score = 0
-  computer_score = 0
-  if my_stat > opponent_result:
-        your_score = your_score + 1
-        print("Your score = ", your_score)
-        print("Computer = ", computer_score)
-  elif my_stat < opponent_result:
-        computer_score = computer_score + 1
-        print("Your score = ", your_score)
-        print("Computer = ", computer_score)
-  else:
-        print("Your score = ", your_score)
-        print("Computer = ", computer_score)
-
 your_score = 0
 computer_score = 0
 
+welcome()
+
 # For loop creates 3 rounds
 for i in range(3):
-    print('Round', i + 1)
+    print('This is round', i + 1, "\n")
     get_pokemon()
 
     input_choice = input("Type the ID number of the Pokemon you choose: ")
@@ -115,13 +105,13 @@ for i in range(3):
 # If statement to create score count
     if my_stat > opponent_result:
         your_score = your_score + 1
-        print("Your score = ", your_score\n)
-        print("Computer = ", computer_score\n)
+        print("Your score = ", your_score, "\n")
+        print("Computer score = ", computer_score, "\n")
     elif my_stat < opponent_result:
         computer_score = computer_score + 1
-        print("Your score = ", your_score\n)
-        print("Computer = ", computer_score\n)
+        print("Your score = ", your_score, "\n")
+        print("Computer score = ", computer_score, "\n")
     else:
-        print("Your score = ", your_score\n)
-        print("Computer = ", computer_score\n)
+        print("Your score = ", your_score, "\n")
+        print("Computer score = ", computer_score, "\n")
 
