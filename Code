@@ -29,8 +29,8 @@ def get_opponent_pokemon():
     url = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(pokemon_number)
     response = requests.get(url)
     pokemon = response.json()
-    print("Bug catcher chose", pokemon['name'])
-    print("Height: ", pokemon['height'], ",\nWeight: ", pokemon['weight'], ",\nBase experience: ",
+    print("\nBug catcher chose", pokemon['name'])
+    print("\nHeight: ", pokemon['height'], ",\nWeight: ", pokemon['weight'], ",\nBase experience: ",
           pokemon['base_experience'])
 
 # Run function runs the game and compares stats
@@ -72,6 +72,21 @@ def opponent_stats():
         pokemon = response.json()
         return int(pokemon['base_experience'])
 
+def score_count():
+  your_score = 0
+  computer_score = 0
+  if my_stat > opponent_result:
+        your_score = your_score + 1
+        print("Your score = ", your_score)
+        print("Computer = ", computer_score)
+  elif my_stat < opponent_result:
+        computer_score = computer_score + 1
+        print("Your score = ", your_score)
+        print("Computer = ", computer_score)
+  else:
+        print("Your score = ", your_score)
+        print("Computer = ", computer_score)
+
 your_score = 0
 computer_score = 0
 
@@ -82,7 +97,7 @@ for i in range(3):
     print('This is round', i + 1, "\n")
     get_pokemon()
 
-    input_choice = input("Type the ID number of the Pokemon you choose: ")
+    input_choice = input("Type the ID number of the Pokemon you choose: ", )
     choice = int(input_choice)
 
     pokestats()
@@ -114,4 +129,3 @@ for i in range(3):
     else:
         print("Your score = ", your_score, "\n")
         print("Computer score = ", computer_score, "\n")
-
