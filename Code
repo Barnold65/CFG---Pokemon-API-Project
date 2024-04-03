@@ -48,6 +48,7 @@ def run():
         pokemon = response.json()
         return int(pokemon['base_experience'])
 
+
 random_pokemon = random.randint(1, 151)
 
 def opponent_stats():
@@ -69,8 +70,8 @@ def opponent_stats():
         return int(pokemon['base_experience'])
 
 # For loop creates 3 rounds
-for x in range(3):
-    print('Round', x + 1)
+for i in range(3):
+    print('Round', i + 1)
     get_pokemon()
 
     input_choice = input("Type the ID number of the Pokemon you choose: ")
@@ -82,7 +83,15 @@ for x in range(3):
 
     run()
 
-    my_stat = run()
-    opponent_result = opponent_stats()
+    my_stat = int(run())
+    opponent_result = int(opponent_stats())
+
+# If elif and else statements display the outcome of the game
+    if my_stat > opponent_result:
+        print('You Win!\n')
+    elif my_stat_choice < opponent_result:
+        print('You Lose!\n')
+    else:
+        print('Draw!\n')
 
 
